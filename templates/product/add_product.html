@@ -1,0 +1,31 @@
+{% extends 'product/index.html' %}
+{% block title %}Add Product{% endblock %}
+{% block content %}
+    <form action="{% url 'add_product' %}" enctype="multipart/form-data" method="POST" class="bg-[#333D79] p-6 rounded-lg shadow-lg w-80 mx-auto mt-10">
+        {% csrf_token %}
+        <h2 class="text-white text-center text-lg mb-4 font-semibold">Add Product</h2>
+        <input type="hidden" value="{{product.id}}" name="product_id">
+        <input type="text" placeholder="Product Name" name="name"
+            class="w-full p-2 mb-3 rounded border border-[#FAEBEF] bg-white text-[#333D79] placeholder-gray-500  " value="{{product.name}}">
+        
+        <input type="text" placeholder="Category" name="category"
+            class="w-full p-2 mb-3 rounded border border-[#FAEBEF] bg-white text-[#333D79] placeholder-gray-500" value="{{product.category}}">
+        
+        <input type="text" placeholder="Quantity" name="quantity"
+            class="w-full p-2 mb-3 rounded border border-[#FAEBEF] bg-white text-[#333D79] placeholder-gray-500"value="{{product.quantity}}">
+        
+        <input type="text" placeholder="Price" name="price"
+            class="w-full p-2 mb-3 rounded border border-[#FAEBEF] bg-white text-[#333D79] placeholder-gray-500" value="{{product.price}}">
+
+        <input type="file" placeholder="File" name="images"
+            class="w-full p-2 mb-3 rounded border border-[#FAEBEF] bg-white text-[#333D79] placeholder-gray-500" value="{{product.images}}">
+        
+        <textarea placeholder="Description" name="description"
+            class="w-full p-2 mb-3 rounded border border-[#FAEBEF] bg-white text-[#333D79] placeholder-gray-500 h-24" value="{{product.description}}"></textarea>
+            
+        
+        <button type="submit" class="w-full bg-white text-[#333D79] font-semibold py-2 rounded hover:bg-[#FAEBEF] transition duration-300">
+            Submit
+        </button>
+    </form>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'product/index.html' %}
+{% block title %}Order Confirmation{% endblock %}
+
+{% block content %}
+<div class="flex justify-center items-center min-h-screen bg-gray-100 px-4">
+    <div class="bg-white shadow-lg rounded-2xl p-6 max-w-md w-full text-center">
+        <h2 class="text-green-600 text-2xl font-bold">🎉 Thank You for Your Order! 🎉</h2>
+        <p class="text-gray-600 mt-2">Your order has been successfully placed. Here are the details:</p>
+
+        <div class="bg-gray-50 p-4 rounded-lg mt-4">
+            <ul class="text-left space-y-2">
+                <li class="font-medium"><span class="text-gray-500">📦 Order Number:</span> {{ order.id }}</li>
+                <li class="font-medium"><span class="text-gray-500">📅 Order Date:</span> {{ order.date|date:"F j, Y" }}</li>
+                <li class="font-medium"><span class="text-gray-500">💰 Total Amount:</span> ${{ order.total|floatformat:2 }}</li>
+            </ul>
+        </div>
+
+        <p class="text-gray-500 mt-3">A confirmation email has been sent to <strong>{{ user.email }}</strong>. 📩</p>
+
+        <a href="{% url 'home' %}" class="inline-block bg-blue-600 text-white px-6 py-3 mt-4 rounded-lg shadow hover:bg-blue-700 transition">
+            🛍️ Continue Shopping
+        </a>
+    </div>
+</div>
+{% endblock %}
